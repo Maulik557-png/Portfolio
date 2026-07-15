@@ -1,6 +1,8 @@
-// Experience — Phase 2: Real internship entries in P→A→C→O framing. Server Component.
-// Layout: vertical timeline — accent left rail, content right.
-// Framing: outcomes first, responsibilities avoided.
+// Experience — Phase 4: Scroll reveals added.
+// Heading: fade-up. Each timeline entry: fade-up with 100 ms stagger.
+// Cards are large so the stagger keeps each one readable before the next arrives.
+
+import { Reveal } from "@/components/Reveal";
 
 type TechTag = string;
 type ExperienceEntry = {
@@ -107,15 +109,17 @@ export function Experience() {
       }}
     >
       <div className="container-bp">
-        <span className="section-label">Experience</span>
+        <Reveal variant="fade-up">
+          <span className="section-label">Experience</span>
 
-        <h2
-          id="experience-heading"
-          className="text-display-sm"
-          style={{ color: "var(--ink)", marginBottom: "3.5rem" }}
-        >
-          Where I&apos;ve shipped
-        </h2>
+          <h2
+            id="experience-heading"
+            className="text-display-sm"
+            style={{ color: "var(--ink)", marginBottom: "3.5rem" }}
+          >
+            Where I&apos;ve shipped
+          </h2>
+        </Reveal>
 
         {/* Timeline */}
         <div style={{ position: "relative" }}>
@@ -133,9 +137,9 @@ export function Experience() {
           />
 
           <div style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
-            {EXPERIENCES.map((entry) => (
+            {EXPERIENCES.map((entry, idx) => (
+              <Reveal key={entry.id} variant="fade-up" delay={idx * 0.10}>
               <div
-                key={entry.id}
                 style={{ paddingLeft: "2.5rem", position: "relative" }}
               >
                 {/* Timeline dot */}
@@ -285,6 +289,7 @@ export function Experience() {
                   ))}
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>

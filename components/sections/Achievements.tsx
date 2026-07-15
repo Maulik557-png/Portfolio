@@ -1,6 +1,8 @@
-// Achievements — updated pre-Phase-3: full hackathon detail cards + OCI cert link.
+// Achievements — Phase 4: Scroll reveals added.
 // Layout: bordered table for certification; expanded cards for hackathons.
 // No emoji, no confetti, no decorative elements.
+
+import { Reveal } from "@/components/Reveal";
 
 // Inline SVG icon (no external dep)
 function GitHubIcon() {
@@ -70,215 +72,220 @@ export function Achievements() {
       }}
     >
       <div className="container-bp">
-        <span className="section-label">Achievements</span>
+        <Reveal variant="fade-up">
+          <span className="section-label">Achievements</span>
 
-        <h2
-          id="achievements-heading"
-          className="text-display-sm"
-          style={{ color: "var(--ink)", marginBottom: "3rem" }}
-        >
-          Recognition
-        </h2>
+          <h2
+            id="achievements-heading"
+            className="text-display-sm"
+            style={{ color: "var(--ink)", marginBottom: "3rem" }}
+          >
+            Recognition
+          </h2>
+        </Reveal>
 
         {/* ── Certification row ── */}
-        <div
-          style={{
-            border: "1px solid var(--border)",
-            borderRadius: "var(--radius-md)",
-            overflow: "hidden",
-            maxWidth: "52rem",
-            marginBottom: "3rem",
-          }}
-        >
+        <Reveal variant="fade-up" delay={0.08}>
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "7rem 1fr auto",
-              gap: "1rem",
-              alignItems: "center",
-              padding: "1.25rem 1.5rem",
-              backgroundColor: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius-md)",
+              overflow: "hidden",
+              maxWidth: "52rem",
+              marginBottom: "3rem",
             }}
           >
-            <span
+            <div
               style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "var(--text-label-sm)",
-                fontWeight: 500,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                color: "var(--accent)",
+                display: "grid",
+                gridTemplateColumns: "7rem 1fr auto",
+                gap: "1rem",
+                alignItems: "center",
+                padding: "1.25rem 1.5rem",
+                backgroundColor: "var(--surface)",
               }}
             >
-              Certification
-            </span>
-            <div>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "var(--text-body-sm)",
-                  fontWeight: 500,
-                  color: "var(--ink)",
-                  marginBottom: "0.15rem",
-                }}
-              >
-                Oracle Cloud Infrastructure Foundations Associate
-              </p>
-              <p
+              <span
                 style={{
                   fontFamily: "var(--font-mono)",
                   fontSize: "var(--text-label-sm)",
-                  color: "var(--ink-faint)",
-                  letterSpacing: "0.04em",
+                  fontWeight: 500,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "var(--accent)",
                 }}
               >
-                Oracle · OCI 2024
-              </p>
+                Certification
+              </span>
+              <div>
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "var(--text-body-sm)",
+                    fontWeight: 500,
+                    color: "var(--ink)",
+                    marginBottom: "0.15rem",
+                  }}
+                >
+                  Oracle Cloud Infrastructure Foundations Associate
+                </p>
+                <p
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "var(--text-label-sm)",
+                    color: "var(--ink-faint)",
+                    letterSpacing: "0.04em",
+                  }}
+                >
+                  Oracle · OCI 2024
+                </p>
+              </div>
+              <a
+                href="https://drive.google.com/file/d/16otqumwK2DKDpN0vbg5SdKwwykVFS8UJ/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+                style={{ padding: "0.375rem 0.875rem", fontSize: "var(--text-label-sm)", whiteSpace: "nowrap" }}
+              >
+                Certificate ↗
+              </a>
             </div>
-            <a
-              href="https://drive.google.com/file/d/16otqumwK2DKDpN0vbg5SdKwwykVFS8UJ/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost"
-              style={{ padding: "0.375rem 0.875rem", fontSize: "var(--text-label-sm)", whiteSpace: "nowrap" }}
-            >
-              Certificate ↗
-            </a>
           </div>
-        </div>
+        </Reveal>
 
         {/* ── Hackathon cards ── */}
         <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-          {HACKATHONS.map((h) => (
-            <article
-              key={h.id}
-              className="card-bp"
-              aria-labelledby={`hackathon-${h.id}-title`}
-              style={{ padding: "2rem" }}
-            >
-              {/* Header */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  flexWrap: "wrap",
-                  gap: "0.75rem",
-                  marginBottom: "1.25rem",
-                  paddingBottom: "1.25rem",
-                  borderBottom: "1px solid var(--border)",
-                }}
+          {HACKATHONS.map((h, i) => (
+            <Reveal key={h.id} variant="fade-up-sm" delay={0.16 + i * 0.08}>
+              <article
+                className="card-bp"
+                aria-labelledby={`hackathon-${h.id}-title`}
+                style={{ padding: "2rem" }}
               >
-                <div>
-                  {/* Type badge */}
-                  <p
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "var(--text-label-sm)",
-                      color: "var(--trace)",
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      marginBottom: "0.4rem",
-                    }}
-                  >
-                    Hackathon · {h.placement}
-                  </p>
-                  <h3
-                    id={`hackathon-${h.id}-title`}
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "1.125rem",
-                      fontWeight: 500,
-                      color: "var(--ink)",
-                      marginBottom: "0.2rem",
-                    }}
-                  >
-                    {h.event}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "var(--text-label-sm)",
-                      color: "var(--ink-faint)",
-                      letterSpacing: "0.04em",
-                    }}
-                  >
-                    {h.venue} · {h.scale} · {h.team}
-                  </p>
-                </div>
-
-                <a
-                  href={h.repo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-ghost"
-                  style={{ padding: "0.375rem 0.875rem", fontSize: "var(--text-label-sm)", flexShrink: 0, display: "inline-flex", alignItems: "center", gap: "0.375rem" }}
+                {/* Header */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                    flexWrap: "wrap",
+                    gap: "0.75rem",
+                    marginBottom: "1.25rem",
+                    paddingBottom: "1.25rem",
+                    borderBottom: "1px solid var(--border)",
+                  }}
                 >
-                  <GitHubIcon />
-                  Github
-                  <span aria-hidden="true">↗</span>
-                </a>
-              </div>
+                  <div>
+                    {/* Type badge */}
+                    <p
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "var(--text-label-sm)",
+                        color: "var(--trace)",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                        marginBottom: "0.4rem",
+                      }}
+                    >
+                      Hackathon · {h.placement}
+                    </p>
+                    <h3
+                      id={`hackathon-${h.id}-title`}
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "1.125rem",
+                        fontWeight: 500,
+                        color: "var(--ink)",
+                        marginBottom: "0.2rem",
+                      }}
+                    >
+                      {h.event}
+                    </h3>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "var(--text-label-sm)",
+                        color: "var(--ink-faint)",
+                        letterSpacing: "0.04em",
+                      }}
+                    >
+                      {h.venue} · {h.scale} · {h.team}
+                    </p>
+                  </div>
 
-              {/* Project detail */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "minmax(0, 3fr) minmax(0, 2fr)",
-                  gap: "2rem",
-                  alignItems: "start",
-                }}
-              >
-                {/* Left: description */}
-                <div>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "var(--text-label-sm)",
-                      color: "var(--accent)",
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      marginBottom: "0.4rem",
-                    }}
+                  <a
+                    href={h.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-ghost"
+                    style={{ padding: "0.375rem 0.875rem", fontSize: "var(--text-label-sm)", flexShrink: 0, display: "inline-flex", alignItems: "center", gap: "0.375rem" }}
                   >
-                    Project · {h.projectName}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "var(--text-body-sm)",
-                      color: "var(--ink-muted)",
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    {h.projectDesc}
-                  </p>
+                    <GitHubIcon />
+                    Github
+                    <span aria-hidden="true">↗</span>
+                  </a>
                 </div>
 
-                {/* Right: stack tags */}
-                <div>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "var(--text-label-sm)",
-                      color: "var(--ink-faint)",
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    Stack
-                  </p>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-                    {h.stack.map((tag) => (
-                      <span key={tag} className="code-label">
-                        {tag}
-                      </span>
-                    ))}
+                {/* Project detail */}
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "minmax(0, 3fr) minmax(0, 2fr)",
+                    gap: "2rem",
+                    alignItems: "start",
+                  }}
+                >
+                  {/* Left: description */}
+                  <div>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "var(--text-label-sm)",
+                        color: "var(--accent)",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                        marginBottom: "0.4rem",
+                      }}
+                    >
+                      Project · {h.projectName}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "var(--text-body-sm)",
+                        color: "var(--ink-muted)",
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      {h.projectDesc}
+                    </p>
+                  </div>
+
+                  {/* Right: stack tags */}
+                  <div>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "var(--text-label-sm)",
+                        color: "var(--ink-faint)",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                        marginBottom: "0.5rem",
+                      }}
+                    >
+                      Stack
+                    </p>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+                      {h.stack.map((tag) => (
+                        <span key={tag} className="code-label">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </article>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>

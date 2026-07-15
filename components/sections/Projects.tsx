@@ -1,6 +1,8 @@
-// Projects — Phase 2: Two internship projects framed with P→A→C→O. Server Component.
-// Layout: featured card (Razorpay) takes full width; HulkHire in a supporting card below.
-// No fake screenshots. No decorative images. Architecture thumbnail is the static node-list.
+// Projects — Phase 4: Scroll reveals added.
+// Featured card: fade-up-lg (larger travel suits the hero card).
+// Secondary card: fade-up with slight delay.
+
+import { Reveal } from "@/components/Reveal";
 
 type ProjectLink = { label: string; href: string; icon: "github" | "bitbucket" };
 
@@ -110,20 +112,26 @@ export function Projects() {
       }}
     >
       <div className="container-bp">
-        <span className="section-label">Projects</span>
+        <Reveal variant="fade-up">
+          <span className="section-label">Projects</span>
 
-        <h2
-          id="projects-heading"
-          className="text-display-sm"
-          style={{ color: "var(--ink)", marginBottom: "3rem" }}
-        >
-          Systems I&apos;ve built
-        </h2>
+          <h2
+            id="projects-heading"
+            className="text-display-sm"
+            style={{ color: "var(--ink)", marginBottom: "3rem" }}
+          >
+            Systems I&apos;ve built
+          </h2>
+        </Reveal>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
           {PROJECTS.map((project, index) => (
-            <article
+            <Reveal
               key={project.id}
+              variant={index === 0 ? "fade-up-lg" : "fade-up"}
+              delay={index * 0.08}
+            >
+              <article
               className="card-bp"
               aria-labelledby={`project-${project.id}-title`}
               style={{
@@ -400,6 +408,7 @@ export function Projects() {
                 )}
               </div>
             </article>
+            </Reveal>
           ))}
         </div>
       </div>
