@@ -2,6 +2,8 @@
 // Layout: featured card (Razorpay) takes full width; HulkHire in a supporting card below.
 // No fake screenshots. No decorative images. Architecture thumbnail is the static node-list.
 
+type ProjectLink = { label: string; href: string; icon: "github" | "bitbucket" };
+
 type ProjectCard = {
   id: string;
   tag: string;
@@ -11,8 +13,25 @@ type ProjectCard = {
   approach: string[];
   outcome: string;
   tech: string[];
-  links: { label: string; href: string }[];
+  links: ProjectLink[];
 };
+
+// Inline SVG icons (no external dep, no icon library)
+function GitHubIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+    </svg>
+  );
+}
+
+function BitbucketIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M.778 1.213a.768.768 0 00-.768.892l2.263 13.81c.13.816.836 1.41 1.669 1.41h7.879c.6 0 1.12-.415 1.247-.996l2.262-13.802a.769.769 0 00-.768-.892L.778 1.213zm6.67 10.045L6.046 7.24h3.908l-1.336 4.018H7.448z"/>
+    </svg>
+  );
+}
 
 const PROJECTS: ProjectCard[] = [
   {
@@ -43,7 +62,7 @@ const PROJECTS: ProjectCard[] = [
       "Docker",
     ],
     links: [
-      { label: "GitHub", href: "https://github.com/Maulik557-png" },
+      { label: "Github", href: "https://github.com/paybridgesystems", icon: "github" as const },
     ],
   },
   {
@@ -71,7 +90,7 @@ const PROJECTS: ProjectCard[] = [
       "Docker",
     ],
     links: [
-      { label: "GitHub", href: "https://github.com/Maulik557-png" },
+      { label: "Bitbucket", href: "https://bitbucket.org/maulikshah557/workspace/projects/HHO", icon: "bitbucket" as const },
     ],
   },
 ];
@@ -285,16 +304,18 @@ export function Projects() {
                       ))}
                     </div>
                     <div style={{ display: "flex", gap: "0.5rem" }}>
-                      {project.links.map(({ label, href }) => (
+                      {project.links.map(({ label, href, icon }) => (
                         <a
                           key={label}
                           href={href}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="btn-ghost"
-                          style={{ padding: "0.375rem 0.875rem", fontSize: "var(--text-label-sm)" }}
+                          style={{ padding: "0.375rem 0.875rem", fontSize: "var(--text-label-sm)", display: "inline-flex", alignItems: "center", gap: "0.375rem" }}
                         >
-                          {label} ↗
+                          {icon === "github" ? <GitHubIcon /> : <BitbucketIcon />}
+                          {label}
+                          <span aria-hidden="true">↗</span>
                         </a>
                       ))}
                     </div>
@@ -373,7 +394,7 @@ export function Projects() {
                         letterSpacing: "0.04em",
                       }}
                     >
-                      // Animated in hero · Phase 3
+                      // Phase 3 complete — diagram is live in the Hero
                     </p>
                   </div>
                 )}

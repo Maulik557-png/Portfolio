@@ -1,6 +1,8 @@
-// Hero — Phase 2: Real name, positioning, CTAs.
-// Phase 3 will replace the right-column placeholder with the live architecture diagram.
-// Server Component — no interactivity in this file.
+// Hero — Phase 3: Static identity content + live ArchitectureDiagram.
+// Server Component — ArchitectureDiagram is a Client Component; the boundary
+// is created automatically by Next.js at the import.
+
+import { ArchitectureDiagram } from "@/components/ArchitectureDiagram";
 
 export function Hero() {
   return (
@@ -125,117 +127,17 @@ export function Hero() {
           </div>
         </div>
 
-        {/* ── Right: Architecture diagram placeholder (Phase 3) ── */}
+        {/* ── Right: Live architecture diagram (Phase 3) ── */}
         <div
-          id="hero-diagram-placeholder"
-          aria-label="Architecture diagram preview — interactive version coming in Phase 3"
+          id="hero-diagram"
           style={{
-            border: "1px dashed var(--border-strong)",
+            padding: "1.5rem",
+            border: "1px solid var(--border)",
             borderRadius: "var(--radius-md)",
-            padding: "2.5rem 2rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "0",
-            minHeight: "380px",
-            backgroundColor: "color-mix(in srgb, var(--surface) 60%, transparent)",
+            backgroundColor: "color-mix(in srgb, var(--surface) 70%, transparent)",
           }}
         >
-          {/* Static node-list preview of real architecture */}
-          <p
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "var(--text-label-sm)",
-              color: "var(--accent)",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Razorpay Payment Flow
-          </p>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 0,
-              width: "100%",
-              maxWidth: "280px",
-            }}
-          >
-            {[
-              { label: "Client",           note: "React / Mobile" },
-              { label: "API Gateway",      note: "Spring Cloud Gateway" },
-              { label: "Payment Service",  note: "Spring Boot · Sig. verify" },
-              { label: "Kafka",            note: "topic: payment.events" },
-              { label: "Redis Cache",      note: "Idempotency · Rate limit" },
-              { label: "MySQL",            note: "Persistent state" },
-            ].map((node, i) => (
-              <div
-                key={node.label}
-                style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}
-              >
-                <div
-                  style={{
-                    width: "100%",
-                    padding: "0.5rem 0.875rem",
-                    border: "1px solid var(--border)",
-                    borderRadius: "var(--radius-sm)",
-                    backgroundColor: "var(--surface)",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.75rem",
-                      fontWeight: 500,
-                      color: "var(--ink)",
-                    }}
-                  >
-                    {node.label}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.6875rem",
-                      color: "var(--ink-faint)",
-                      textAlign: "right",
-                    }}
-                  >
-                    {node.note}
-                  </span>
-                </div>
-                {i < 5 && (
-                  <div
-                    style={{
-                      width: "1px",
-                      height: "1.25rem",
-                      backgroundColor: "var(--border-strong)",
-                    }}
-                  />
-                )}
-              </div>
-            ))}
-          </div>
-
-          <p
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "var(--text-label-sm)",
-              color: "var(--ink-faint)",
-              marginTop: "1.5rem",
-              letterSpacing: "0.06em",
-            }}
-          >
-            // Animated trace · Phase 3
-          </p>
+          <ArchitectureDiagram />
         </div>
       </div>
     </section>
