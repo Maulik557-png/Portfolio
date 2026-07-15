@@ -3,17 +3,17 @@ import "./globals.css";
 import { ThemeProvider } from "@/lib/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Maulik Smaul — Backend Engineer",
+  title: "Maulik Shah — Backend Engineer",
   description:
-    "Portfolio of a final-year backend engineering student specializing in Java, Spring Boot, Kafka, Redis, and AWS. Targeting backend and full-stack roles.",
-  keywords: ["backend engineer", "Java", "Spring Boot", "Kafka", "Redis", "AWS", "portfolio"],
-  authors: [{ name: "Maulik Smaul" }],
+    "Portfolio of Maulik Shah, a final-year Computer Engineering student specializing in Java, Spring Boot, Kafka, Redis, and AWS. Building production-grade systems.",
+  keywords: ["backend engineer", "Java", "Spring Boot", "Kafka", "Redis", "AWS", "portfolio", "Maulik Shah"],
+  authors: [{ name: "Maulik Shah" }],
   openGraph: {
     type: "website",
-    title: "Maulik Smaul — Backend Engineer",
+    title: "Maulik Shah — Backend Engineer",
     description:
-      "Backend engineering portfolio: systems that scale, designs that explain themselves.",
-    siteName: "Maulik Smaul Portfolio",
+      "Backend engineering portfolio: Razorpay + PayPal payment systems built with Spring Boot, Kafka, and Redis.",
+    siteName: "Maulik Shah",
   },
 };
 

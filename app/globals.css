@@ -364,6 +364,11 @@ body::before {
   background: var(--ink-faint);
 }
 
+/* ─── Link hover (CSS-only, works in Server Components) ──────────────────── */
+a.text-label-sm:hover {
+  color: var(--accent) !important;
+}
+
 /* ─── Selection ───────────────────────────────────────────────────────────── */
 ::selection {
   background-color: color-mix(in srgb, var(--accent) 20%, transparent);
