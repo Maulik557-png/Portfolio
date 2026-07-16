@@ -116,7 +116,7 @@ export function TechStack() {
         <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           {STACK.map((cat, i) => (
             <Reveal key={cat.label} variant="fade-left" delay={i * 0.06} duration={0.45}>
-              <div style={{ display: "flex", gap: "1.5rem", alignItems: "baseline" }}>
+              <div className="tech-row-responsive">
                 {/* Category label */}
                 <div
                   style={{

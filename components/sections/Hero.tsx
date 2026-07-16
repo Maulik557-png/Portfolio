@@ -19,12 +19,8 @@ export function Hero() {
       }}
     >
       <div
-        className="container-bp"
+        className="container-bp grid-2col-responsive"
         style={{
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)",
-          gap: "4rem",
-          alignItems: "center",
           paddingBlock: "4rem",
         }}
       >

@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/lib/ThemeProvider";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://maulikshah-portfolio.vercel.app"),
   title: "Maulik Shah — Backend Engineer",
   description:
     "Portfolio of Maulik Shah, a final-year Computer Engineering student specializing in Java, Spring Boot, Kafka, Redis, and AWS. Building production-grade systems.",
@@ -14,6 +15,12 @@ export const metadata: Metadata = {
     description:
       "Backend engineering portfolio: Razorpay + PayPal payment systems built with Spring Boot, Kafka, and Redis.",
     siteName: "Maulik Shah",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Maulik Shah — Backend Engineer",
+    description:
+      "Backend engineering portfolio: Razorpay + PayPal payment systems built with Spring Boot, Kafka, and Redis.",
   },
 };
 

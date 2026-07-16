@@ -21,14 +21,7 @@ export function About() {
           <span className="section-label">About</span>
         </Reveal>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 3fr) minmax(0, 2fr)",
-            gap: "4rem",
-            alignItems: "start",
-          }}
-        >
+        <div className="grid-about-responsive">
           {/* ── Left: Bio ── */}
           <Reveal variant="fade-up" delay={0.06}>
             <div>

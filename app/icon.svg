@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <style>
+    :root {
+      --bg: #F2F5F7;
+      --text: #0E1C2F;
+      --accent: #1A7FA0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0D1B2A;
+        --text: #E8EDF1;
+        --accent: #3AB5D8;
+      }
+    }
+    rect { fill: var(--bg); transition: fill 0.3s ease; }
+    text.logo-text { fill: var(--text); font-family: "DM Mono", monospace; font-size: 14px; font-weight: bold; }
+    text.logo-cursor { fill: var(--accent); font-family: "DM Mono", monospace; font-size: 14px; font-weight: bold; }
+  </style>
+  <rect width="32" height="32" rx="6" />
+  <text x="5" y="21" class="logo-text">ms</text>
+  <text x="21" y="21" class="logo-cursor">_</text>
+</svg>

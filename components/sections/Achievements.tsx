@@ -96,12 +96,8 @@ export function Achievements() {
             }}
           >
             <div
+              className="cert-row-responsive"
               style={{
-                display: "grid",
-                gridTemplateColumns: "7rem 1fr auto",
-                gap: "1rem",
-                alignItems: "center",
-                padding: "1.25rem 1.5rem",
                 backgroundColor: "var(--surface)",
               }}
             >
@@ -227,14 +223,7 @@ export function Achievements() {
                 </div>
 
                 {/* Project detail */}
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "minmax(0, 3fr) minmax(0, 2fr)",
-                    gap: "2rem",
-                    alignItems: "start",
-                  }}
-                >
+                <div className="grid-hackathon-responsive">
                   {/* Left: description */}
                   <div>
                     <p

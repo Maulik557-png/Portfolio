@@ -54,14 +54,12 @@ export function Navbar() {
 
         {/* Nav links — desktop */}
         <ul
+          className="nav-links-responsive"
           style={{
-            display: "flex",
-            gap: "2rem",
             listStyle: "none",
             margin: 0,
             padding: 0,
           }}
-          className="hidden sm:flex"
         >
           {NAV_LINKS.map(({ href, label }) => (
             <li key={href}>

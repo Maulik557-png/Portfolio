@@ -141,12 +141,17 @@ export function Projects() {
               }}
             >
               <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: index === 0 ? "minmax(0, 3fr) minmax(0, 2fr)" : "1fr",
-                  gap: "2.5rem",
-                  alignItems: "start",
-                }}
+                className={index === 0 ? "grid-featured-project-responsive" : undefined}
+                style={
+                  index !== 0
+                    ? {
+                        display: "grid",
+                        gridTemplateColumns: "1fr",
+                        gap: "2.5rem",
+                        alignItems: "start",
+                      }
+                    : undefined
+                }
               >
                 {/* ── Left / Main content ── */}
                 <div>
